@@ -1,4 +1,4 @@
-package com.android.srx.github.smartbulter.view;
+package com.android.srx.github.smartbulter.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

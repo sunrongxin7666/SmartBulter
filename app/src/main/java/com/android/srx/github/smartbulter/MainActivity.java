@@ -1,5 +1,7 @@
 package com.android.srx.github.smartbulter;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +14,7 @@ import com.android.srx.github.smartbulter.fragment.ButlerFragment;
 import com.android.srx.github.smartbulter.fragment.GirlFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
 import com.android.srx.github.smartbulter.fragment.WehatFragment;
+import com.android.srx.github.smartbulter.ui.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private TabLayout mTabLayout;
 	private ViewPager mViewPager;
+	private FloatingActionButton mActionButton;
 
 	private List<String> mTitles;
 	private List<Fragment> mFragments;
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 	private void initView() {
 		mTabLayout = (TabLayout) findViewById(R.id.mTabLayout);
 		mViewPager = (ViewPager) findViewById(R.id.mViewPager);
+		mActionButton = (FloatingActionButton) findViewById(R.id.fab_setting);
 
 		//预加载
 		mViewPager.setOffscreenPageLimit(mFragments.size());
@@ -75,5 +80,9 @@ public class MainActivity extends AppCompatActivity {
 		mFragments.add(new WehatFragment());
 		mFragments.add(new GirlFragment());
 		mFragments.add(new UserFragment());
+	}
+
+	public void gotoSetting(View view) {
+		this.startActivity(new Intent(this,SettingActivity.class));
 	}
 }
