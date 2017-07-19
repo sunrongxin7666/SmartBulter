@@ -38,11 +38,7 @@ public class MainActivity extends AppCompatActivity {
 		initData();
 		initView();
 
-		//A去掉ActionBar的渐进阴影
-		//noinspection ConstantConditions
-		getSupportActionBar().setElevation(0);
-		String s = SharedUtils.getString(this, "username", "srx");
-		L.i(s);
+
 	}
 
 	private void initView() {
@@ -96,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
 		//绑定
 		mTabLayout.setupWithViewPager(mViewPager);
+
+		//A去掉ActionBar的渐进阴影
+		//noinspection ConstantConditions
+		getSupportActionBar().setElevation(0);
 	}
 
 	private void initData() {

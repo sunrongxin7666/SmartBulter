@@ -9,4 +9,10 @@ package com.android.srx.github.smartbulter.utils;
  */
 
 public class StaticClass {
+
+	//首页闪屏
+	public static final int HANDLER_SPLASH = 1001;
+
+	//首页是否第一次运行
+	public static final String SHARE_IS_FIRST_RUN = "share_is_first";
 }

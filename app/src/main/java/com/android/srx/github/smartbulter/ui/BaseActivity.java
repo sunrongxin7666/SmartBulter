@@ -11,9 +11,6 @@ import android.view.MenuItem;
  * File: BaseActivity
  * Created by sunrongxin on 2017/7/17 下午7:07.
  * Description: Activity Based Class
- */
-
-/**
  * 主要的功能：
  * 1. 统一的接口
  * 2. 统一的接口
@@ -24,15 +21,17 @@ public class BaseActivity extends AppCompatActivity{
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		//显示返回键
+		//显示自定义的ActionBar
+		//noinspection ConstantConditions
 		getSupportActionBar().setDisplayShowCustomEnabled(true);
+		getSupportActionBar().setElevation(0);//取消渐变颜差
 	}
 
 	//菜单栏显示
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()){
-			case android.support.v7.appcompat.R.id.home:
+			case android.R.id.home:
 				finish();
 				break;
 			default:
