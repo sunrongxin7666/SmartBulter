@@ -61,6 +61,7 @@ public class SplashActivity extends AppCompatActivity {
 		Message message = Message.obtain();
 		message.what = StaticClass.HANDLER_SPLASH;
 		message.arg1 = isFirst()?1:0;
+		//message.arg1 = 1;
 		//延时2000
 		mHandler.sendMessageDelayed(message,2000);
 		mTextView = (TextView) findViewById(R.id.tv_splash);

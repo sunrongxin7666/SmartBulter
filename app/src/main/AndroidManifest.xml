@@ -34,7 +34,8 @@
             android:name=".ui.SettingActivity"
             android:label="@string/text_setting"/>
         <!--引导页-->
-        <activity android:name=".ui.GuideActivity">
+        <activity android:name=".ui.GuideActivity"
+            android:theme="@style/NoActivityFullscreen">
         </activity>
     </application>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,10 +8,52 @@
     android:orientation="vertical"
     tools:context="com.android.srx.github.smartbulter.ui.GuideActivity">
 
-    <TextView
-        android:id="@+id/tv_splash"
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="25dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/point1"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/point2"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/point3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+
+    <!--相对布局中后面的会覆盖前面的View-->
+    <ImageView
+        android:id="@+id/image_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:text="引导页"/>
-</LinearLayout>
+        android:src="@drawable/black"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:clickable="true"
+        android:onClick="gotoMainActivity"/>
+</RelativeLayout>
