@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.android.srx.github.smartbulter.fragment.ButlerFragment;
@@ -15,12 +16,15 @@ import com.android.srx.github.smartbulter.fragment.GirlFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
 import com.android.srx.github.smartbulter.fragment.WehatFragment;
 import com.android.srx.github.smartbulter.ui.SettingActivity;
+import com.android.srx.github.smartbulter.utils.L;
+import com.android.srx.github.smartbulter.utils.SharedUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+	private static final String TAG = MainActivity.class.getSimpleName();
 	private TabLayout mTabLayout;
 	private ViewPager mViewPager;
 	private FloatingActionButton mActionButton;
@@ -34,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
 		initData();
 		initView();
 
-		//Action的渐进阴影设为空，去掉阴影
+		//A去掉ActionBar的渐进阴影
+		//noinspection ConstantConditions
 		getSupportActionBar().setElevation(0);
+		String s = SharedUtils.getString(this, "username", "srx");
+		L.i(s);
 	}
 
 	private void initView() {
@@ -45,6 +52,29 @@ public class MainActivity extends AppCompatActivity {
 
 		//预加载
 		mViewPager.setOffscreenPageLimit(mFragments.size());
+
+		//ViewPager滑动监听
+		mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+			}
+
+			@Override
+			public void onPageSelected(int position) {
+				Log.e(TAG, "onPageSelected: "+position);
+				if(position==0){
+					mActionButton.setVisibility(View.GONE);
+				} else {
+					mActionButton.setVisibility(View.VISIBLE);
+				}
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int state) {
+
+			}
+		});
 
 		//设置配置器 ViewPager是ViewGroup
 		mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
