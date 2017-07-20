@@ -15,4 +15,6 @@ public class StaticClass {
 
 	//首页是否第一次运行
 	public static final String SHARE_IS_FIRST_RUN = "share_is_first";
+
+	public static final String BUGLY_APPID = "49f5561b90";
 }

@@ -18,6 +18,7 @@ import com.android.srx.github.smartbulter.fragment.WehatFragment;
 import com.android.srx.github.smartbulter.ui.SettingActivity;
 import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 		initData();
 		initView();
 
-
+		//CrashReport.testJavaCrash();
 	}
 
 	private void initView() {
