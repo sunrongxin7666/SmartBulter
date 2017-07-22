@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">SmartBulter</string>
     <string name="text_setting">设置</string>
+    <string name="string_register">注册</string>
+    <string name="text_user_name">用户名</string>
+    <string name="text_age">年龄</string>
+    <string name="text_desc">简介</string>
+    <string name="text_boy">男</string>
+    <string name="text_girl_f">女</string>
+    <string name="text_password">密码</string>
+    <string name="text_password_again">再输入一次密码</string>
+    <string name="text_email">邮箱</string>
+    <string name="text_register_remind">注册成功需要前往邮箱验证，否者将无法登录</string>
+    <string name="text_registered">注册</string>
+    <string name="text_nothing">暂无简介</string>
+    <string name="text_registered_successful">注册成功</string>
+    <string name="text_registered_failure">注册失败</string>
+    <string name="text_two_input_not_consistent">两次密码输入不一致</string>
+    <string name="text_tost_empty">输入不能为空</string>
 </resources>

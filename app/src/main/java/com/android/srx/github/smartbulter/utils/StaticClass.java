@@ -17,4 +17,6 @@ public class StaticClass {
 	public static final String SHARE_IS_FIRST_RUN = "share_is_first";
 
 	public static final String BUGLY_APPID = "49f5561b90";
+
+	public static final String BMOB_APPID = "004e0c0d1653f66dd0b2ade451c544c2";
 }

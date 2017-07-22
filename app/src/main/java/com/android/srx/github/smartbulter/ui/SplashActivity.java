@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.android.srx.github.smartbulter.MainActivity;
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.application.BaseApplication;
 import com.android.srx.github.smartbulter.utils.SafeHandler;
@@ -96,7 +95,7 @@ public class SplashActivity extends AppCompatActivity {
 					if (msg.arg1 == 1) {//进入引导页
 						activity.startActivity(new Intent(activity.getApplicationContext(), GuideActivity.class));
 					} else if (msg.arg1 == 0) {//进入主页
-						activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
+						activity.startActivity(new Intent(activity.getApplicationContext(), RegisteredActivity.class));
 					}
 					activity.finish();
 					break;

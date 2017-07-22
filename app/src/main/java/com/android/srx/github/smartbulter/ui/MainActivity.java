@@ -1,4 +1,4 @@
-package com.android.srx.github.smartbulter;
+package com.android.srx.github.smartbulter.ui;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -11,14 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.fragment.ButlerFragment;
 import com.android.srx.github.smartbulter.fragment.GirlFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
 import com.android.srx.github.smartbulter.fragment.WehatFragment;
-import com.android.srx.github.smartbulter.ui.SettingActivity;
-import com.android.srx.github.smartbulter.utils.L;
-import com.android.srx.github.smartbulter.utils.SharedUtils;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.ArrayList;
 import java.util.List;

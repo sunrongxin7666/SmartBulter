@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">智能管家</string>
     <string name="text_setting">设置</string>
+    <string name="string_register">注册</string>
+    <string name="text_user_name">用户名</string>
+    <string name="text_girl_f">女</string>
+    <string name="text_password">密码</string>
+    <string name="text_password_again">再输入一次密码</string>
+    <string name="text_email">邮箱</string>
+    <string name="text_register_remind">注册成功需要前往邮箱验证，否者将无法登录</string>
+    <string name="text_registered">注册</string>
+    <string name="text_nothing">暂无简介</string>
+    <string name="text_registered_failure">注册失败</string>
 </resources>

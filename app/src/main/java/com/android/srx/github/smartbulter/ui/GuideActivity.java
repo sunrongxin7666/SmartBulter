@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.android.srx.github.smartbulter.MainActivity;
 import com.android.srx.github.smartbulter.R;
 
 import java.util.ArrayList;
@@ -93,7 +92,7 @@ public class GuideActivity extends AppCompatActivity {
 	}
 
 	public void gotoMainActivity(View view) {
-		startActivity(new Intent(this, MainActivity.class));
+		startActivity(new Intent(this, RegisteredActivity.class));
 		finish();
 	}
 
