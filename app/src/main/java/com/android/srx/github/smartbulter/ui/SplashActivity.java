@@ -95,7 +95,7 @@ public class SplashActivity extends AppCompatActivity {
 					if (msg.arg1 == 1) {//进入引导页
 						activity.startActivity(new Intent(activity.getApplicationContext(), GuideActivity.class));
 					} else if (msg.arg1 == 0) {//进入主页
-						activity.startActivity(new Intent(activity.getApplicationContext(), RegisteredActivity.class));
+						activity.startActivity(new Intent(activity.getApplicationContext(), LoginActivity.class));
 					}
 					activity.finish();
 					break;

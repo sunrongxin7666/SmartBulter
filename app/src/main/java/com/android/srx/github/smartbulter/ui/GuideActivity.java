@@ -92,7 +92,7 @@ public class GuideActivity extends AppCompatActivity {
 	}
 
 	public void gotoMainActivity(View view) {
-		startActivity(new Intent(this, RegisteredActivity.class));
+		startActivity(new Intent(this, LoginActivity.class));
 		finish();
 	}
 

@@ -14,12 +14,15 @@
 
     <EditText
         android:hint="用户名"
+        android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+        android:id="@+id/et_password"
         android:hint="密码"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"/>
     <LinearLayout
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
@@ -27,6 +30,7 @@
         android:orientation="vertical"
         android:gravity="right">
         <CheckBox
+            android:id="@+id/keep_password"
             android:text="记住密码?"
             android:gravity="center"
             android:textColor="@color/colorAccent"
@@ -34,8 +38,10 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <Button
+        android:id="@+id/btn_login"
         android:text="登录"
         android:layout_marginTop="10dp"
+        android:onClick="doLogin"
         android:textColor="@android:color/white"
         android:background="@drawable/button_bg"
         android:layout_width="match_parent"
@@ -58,10 +64,13 @@
         android:orientation="vertical"
         android:gravity="right">
         <TextView
-            android:text="记住密码"
+            android:id="@+id/tv_forget"
+            android:text="忘记密码"
             android:gravity="center"
             android:textColor="@color/colorAccent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="doReset"/>
     </LinearLayout>
 </LinearLayout>
