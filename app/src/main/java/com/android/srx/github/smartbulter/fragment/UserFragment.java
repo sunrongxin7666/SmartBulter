@@ -96,6 +96,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 		profile_image = (CircleImageView) view.findViewById(R.id.profile_image);
 		profile_image.setOnClickListener(this);
 
+		UtilTools.getImageToShare(getActivity(),profile_image);
 
 
 		//初始化dialog
