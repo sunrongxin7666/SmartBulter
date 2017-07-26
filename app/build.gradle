@@ -43,6 +43,7 @@ dependencies {
     compile 'cn.bmob.android:bmob-sdk:3.5.5'
     compile 'cn.bmob.android:http-legacy:1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
     testCompile 'junit:junit:4.12'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'

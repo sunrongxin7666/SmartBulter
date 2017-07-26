@@ -19,4 +19,8 @@ public class StaticClass {
 	public static final String BUGLY_APPID = "49f5561b90";
 
 	public static final String BMOB_APPID = "004e0c0d1653f66dd0b2ade451c544c2";
+
+	//聚合数据 appkey
+	public static final String JUHE_API_KEY = "933cfe30435d01d8674e7684eb9e7ff3";
+	//http://v.juhe.cn/exp/index?key=933cfe30435d01d8674e7684eb9e7ff3&com=sf&no=575677355677
 }
