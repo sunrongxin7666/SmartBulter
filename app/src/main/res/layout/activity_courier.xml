@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/text_courier_number"
-        android:text="416688878066"/>
+        android:text="12313"/>
 
     <Button
         android:id="@+id/btn_get_courier"

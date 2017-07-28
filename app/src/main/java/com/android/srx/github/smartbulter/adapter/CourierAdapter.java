@@ -17,7 +17,7 @@ import java.util.List;
  * Packege: com.android.srx.github.smartbulter.adapter
  * File: CourierAdapter
  * Created by sunrongxin on 2017/7/27 上午12:01.
- * Description: TODO
+ * Description: 快递路由配置器
  */
 
 public class CourierAdapter extends BaseAdapter {

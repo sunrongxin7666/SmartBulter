@@ -40,10 +40,21 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
-    compile 'cn.bmob.android:bmob-sdk:3.5.5'
+    //Bmob
+    compile('cn.bmob.android:bmob-sdk:3.5.5') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        exclude group: 'io.reactivex:rxandroid'
+        exclude group: 'io.reactivex:rxjava'
+        exclude group: 'com.squareup.okio'
+    }
+    compile('com.kymjs.rxvolley:rxvolley:1.1.4') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        exclude group: 'com.squareup.okio'
+        exclude group: 'io.reactivex'
+    }
     compile 'cn.bmob.android:http-legacy:1.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.kymjs.rxvolley:rxvolley:1.1.4'
+
     testCompile 'junit:junit:4.12'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
