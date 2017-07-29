@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/text_courier_company"
-        android:text="zto"/>
+        android:text="sf"/>
 
 
     <EditText
@@ -34,5 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+        <!--layout_weight=1表示该空间占据宽的100%-->
 
 </LinearLayout>

@@ -32,7 +32,7 @@ public class CourierAdapter extends BaseAdapter {
 		this.mContext = mContext;
 		this.mList = mList;
 		//获取系统服务
-		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class CourierAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	class ViewHolder {
+	private class ViewHolder {
 		private TextView tv_remark;
 		private TextView tv_zone;
 		private TextView tv_datetime;

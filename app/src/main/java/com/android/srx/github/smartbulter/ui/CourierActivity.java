@@ -95,9 +95,13 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
 	private void parsingJson(String t) {
 		try {
 			JSONObject jsonObject = new JSONObject(t);
+			if(!jsonObject.has("result")){
+				throw new JSONException("no result mapping");
+			}
 			JSONObject jsonResult = jsonObject.getJSONObject("result");
 			JSONArray jsonArray = jsonResult.getJSONArray("list");
 			for (int i = 0; i < jsonArray.length(); i++) {
+				//list中每一个Json都一个CourierData对象；
 				JSONObject json = (JSONObject) jsonArray.get(i);
 
 				CourierData data = new CourierData();

@@ -5,7 +5,7 @@ package com.android.srx.github.smartbulter.entity;
  * Packege: com.android.srx.github.smartbulter.entity
  * File: CourierData
  * Created by sunrongxin on 2017/7/26 下午11:59.
- * Description: TODO
+ * Description: 快递路由信息数据
  */
 
 public class CourierData {
