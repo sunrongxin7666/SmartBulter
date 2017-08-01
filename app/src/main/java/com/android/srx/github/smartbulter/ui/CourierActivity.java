@@ -69,7 +69,7 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
 				String number = et_number.getText().toString().trim();
 
 				//拼接我们的url
-				String url = "http://v.juhe.cn/exp/index?key=" + StaticClass.JUHE_API_KEY
+				String url = "http://v.juhe.cn/exp/index?key=" + StaticClass.JUHE_COURIER_API_KEY
 						             + "&com=" + name + "&no=" + number;
 
 				//2.判断是否为空

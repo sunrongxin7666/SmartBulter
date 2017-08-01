@@ -63,11 +63,14 @@
             android:name=".ui.RegisteredActivity"
             android:label="@string/string_register">
         </activity>
-        <activity android:name=".ui.ForgetPasswordActivity">
+        <activity android:name=".ui.ForgetPasswordActivity"
+            android:label="忘记密码">
         </activity>
-        <activity android:name=".ui.CourierActivity">
+        <activity android:name=".ui.CourierActivity"
+            android:label="快递查询">
         </activity>
-        <activity android:name=".ui.PhoneActivity">
+        <activity android:name=".ui.PhoneActivity"
+            android:label="手机号查询">
         </activity>
     </application>
 
