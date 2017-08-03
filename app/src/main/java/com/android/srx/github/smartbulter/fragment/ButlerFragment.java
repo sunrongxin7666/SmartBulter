@@ -19,7 +19,9 @@ import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
 import com.android.srx.github.smartbulter.utils.StaticClass;
 import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechSynthesizer;
+import com.iflytek.cloud.SynthesizerListener;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
 
