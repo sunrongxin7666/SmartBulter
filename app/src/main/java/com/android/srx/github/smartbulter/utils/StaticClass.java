@@ -23,4 +23,5 @@ public class StaticClass {
 	//聚合数据 快递 appkey
 	public static final String JUHE_COURIER_API_KEY = "933cfe30435d01d8674e7684eb9e7ff3";
 	public static final String PHONE_KEY = "22a6ba14995ce26dd0002216be51dabb";
+	public static final String CHAT_LIST_KEY = ;
 }
