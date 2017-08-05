@@ -36,7 +36,7 @@ import java.util.List;
  * Packege: com.android.srx.github.smartbulter.fragment
  * File: ButlerFragment
  * Created by sunrongxin on 2017/7/17 下午10:38.
- * Description: TODO
+ * Description: 智能管家对话
  */
 
 public class ButlerFragment extends Fragment implements View.OnClickListener {
@@ -58,6 +58,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_butler,null);
+		findView(view);
 		return view;
 	}
 
@@ -138,10 +139,10 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 	//解析Json
 	private void parsingJson(String t) {
 		try {
-			JSONObject jsonObhect = new JSONObject(t);
-			JSONObject jsonresult = jsonObhect.getJSONObject("result");
+			JSONObject jsonObject = new JSONObject(t);
+			JSONObject jsonResult = jsonObject.getJSONObject("result");
 			//拿到返回值
-			String text = jsonresult.getString("text");
+			String text = jsonResult.getString("text");
 			//7.拿到机器人的返回值之后添加在left item
 			addLeftItem(text);
 		} catch (JSONException e) {

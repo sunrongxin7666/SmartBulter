@@ -17,7 +17,7 @@ import java.util.List;
  * Packege: com.android.srx.github.smartbulter.adapter
  * File: ChatListAdapter
  * Created by sunrongxin on 2017/8/3 下午11:16.
- * Description: TODO
+ * Description: 智能管家回话配置器
  */
 
 public class ChatListAdapter extends BaseAdapter {

@@ -5,7 +5,7 @@ package com.android.srx.github.smartbulter.entity;
  * Packege: com.android.srx.github.smartbulter.entity
  * File: ChatListData
  * Created by sunrongxin on 2017/8/3 下午11:17.
- * Description: TODO
+ * Description: 会话数据
  */
 
 public class ChatListData {
