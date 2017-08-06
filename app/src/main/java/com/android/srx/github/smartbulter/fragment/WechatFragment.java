@@ -12,12 +12,13 @@ import com.android.srx.github.smartbulter.R;
 /**
  * Project: SmartBulter
  * Packege: com.android.srx.github.smartbulter.fragment
- * File: WehatFragment
+ * File: WechatFragment
  * Created by sunrongxin on 2017/7/17 下午10:47.
- * Description: TODO
+ * Description: wechat news
  */
 
-public class WehatFragment extends Fragment{
+public class WechatFragment extends Fragment{
+
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

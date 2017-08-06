@@ -15,7 +15,7 @@ import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.fragment.ButlerFragment;
 import com.android.srx.github.smartbulter.fragment.GirlFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
-import com.android.srx.github.smartbulter.fragment.WehatFragment;
+import com.android.srx.github.smartbulter.fragment.WechatFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
 		mFragments = new ArrayList<>();
 		mFragments.add(new ButlerFragment());
-		mFragments.add(new WehatFragment());
+		mFragments.add(new WechatFragment());
 		mFragments.add(new GirlFragment());
 		mFragments.add(new UserFragment());
 	}
