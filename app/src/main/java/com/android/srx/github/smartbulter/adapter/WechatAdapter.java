@@ -11,24 +11,23 @@ import android.widget.TextView;
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.entity.WeChatData;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * Project: SmartBulter
  * Packege: com.android.srx.github.smartbulter.adapter
- * File: WechetAdapter
+ * File: WechatAdapter
  * Created by sunrongxin on 2017/8/6 下午11:30.
  * Description: TODO
  */
 
-public class WechetAdapter extends BaseAdapter {
+public class WechatAdapter extends BaseAdapter {
 	private Context mContext;
 	private List<WeChatData> mList;
 	private WeChatData mData;
 	private LayoutInflater mInflater;
 
-	public WechetAdapter(Context context, List<WeChatData> list){
+	public WechatAdapter(Context context, List<WeChatData> list){
 		mContext = context;
 		mList = list;
 		mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
