@@ -44,6 +44,7 @@ public class WebViewActivity extends AppCompatActivity {
 
 		//进行加载网页的逻辑
 
+		// TODO: 2017/8/7 模拟器上webview显示有问题
 		//支持JS
 		mWebView.getSettings().setJavaScriptEnabled(true);
 

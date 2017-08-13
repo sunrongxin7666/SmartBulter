@@ -26,4 +26,6 @@ public class StaticClass {
 	public static final String CHAT_LIST_KEY = "7a48539921338ef90866922b21e25f6d";
 
 	public static final String WECHAT_KEY = "78f723dccf85aea324a3cf0daac97f35";
+
+	public static final String GIRL_URL = "http://gank.io/api/search/query/listview/category/福利/count/50/page/1 ";
 }

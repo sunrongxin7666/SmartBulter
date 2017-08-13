@@ -1,15 +1,22 @@
 package com.android.srx.github.smartbulter.adapter;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.text.TextUtils;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.entity.WeChatData;
+import com.android.srx.github.smartbulter.utils.L;
+import com.android.srx.github.smartbulter.utils.PicassoUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,7 +25,7 @@ import java.util.List;
  * Packege: com.android.srx.github.smartbulter.adapter
  * File: WechatAdapter
  * Created by sunrongxin on 2017/8/6 下午11:30.
- * Description: TODO
+ * Description: 微信精选Adapter
  */
 
 public class WechatAdapter extends BaseAdapter {
@@ -27,10 +34,21 @@ public class WechatAdapter extends BaseAdapter {
 	private WeChatData mData;
 	private LayoutInflater mInflater;
 
+	private int width,height;
+	private WindowManager wm;
+
 	public WechatAdapter(Context context, List<WeChatData> list){
 		mContext = context;
 		mList = list;
 		mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+		Display display = wm.getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		width = size.x;
+		height = size.y;
+		L.i("Width:" + width + "Height:" + height);
 	}
 
 	@Override
@@ -65,6 +83,13 @@ public class WechatAdapter extends BaseAdapter {
 		mData = mList.get(position);
 		viewHolder.tx_title.setText(mData.getTitle());
 		viewHolder.tx_source.setText(mData.getSource());
+		//Picasso.with(mContext).load(mData.getImgUrl()).into(viewHolder.iv_img);
+		if(!TextUtils.isEmpty(mData.getImgUrl())){
+			//加载图片
+			PicassoUtils.loadImageViewSize(mContext, mData.getImgUrl(), width/3, 250, viewHolder.iv_img);
+		}
+
+		//PicassoUtils.loadImageViewSize(mContext,mData.getImgUrl(),300,100,viewHolder.iv_img);
 		return convertView;
 	}
 
