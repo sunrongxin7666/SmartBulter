@@ -2,7 +2,10 @@ package com.android.srx.github.smartbulter.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 
+import com.android.srx.github.smartbulter.service.SmsService;
+import com.android.srx.github.smartbulter.utils.SharedUtils;
 import com.android.srx.github.smartbulter.utils.StaticClass;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
@@ -33,5 +36,10 @@ public class BaseApplication extends Application {
 
 		//初始化Bugly
 		CrashReport.initCrashReport(getApplicationContext(), StaticClass.BUGLY_APPID, true);
+
+		Boolean isSms = SharedUtils.getBoolen(getApplicationContext(), "isSms", false);
+		if(isSms){
+			startService(new Intent(getApplicationContext(),SmsService.class));
+		}
 	}
 }
