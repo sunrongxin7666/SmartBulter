@@ -3,7 +3,9 @@ package com.android.srx.github.smartbulter.application;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 
+import com.android.srx.github.smartbulter.service.SmsContent;
 import com.android.srx.github.smartbulter.service.SmsService;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
 import com.android.srx.github.smartbulter.utils.StaticClass;

@@ -1,6 +1,8 @@
 package com.android.srx.github.smartbulter.ui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -16,10 +18,15 @@ import com.android.srx.github.smartbulter.fragment.ButlerFragment;
 import com.android.srx.github.smartbulter.fragment.GirlFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
 import com.android.srx.github.smartbulter.fragment.WechatFragment;
+import com.android.srx.github.smartbulter.service.SmsContent;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
 public class MainActivity extends AppCompatActivity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
@@ -29,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
 	private List<String> mTitles;
 	private List<Fragment> mFragments;
+	private SmsContent mSmsContent;
+
+	@NeedsPermission(Manifest.permission.READ_SMS)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 		initView();
 
 		//CrashReport.testJavaCrash();
+
+		mSmsContent = new SmsContent(new Handler(),this);
+		mSmsContent.register();
 	}
 
 	private void initView() {
@@ -112,5 +125,11 @@ public class MainActivity extends AppCompatActivity {
 
 	public void gotoSetting(View view) {
 		this.startActivity(new Intent(this,SettingActivity.class));
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mSmsContent.unRegister();
 	}
 }
