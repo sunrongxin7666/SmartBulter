@@ -34,4 +34,6 @@ public class StaticClass {
 
 	//短信Action
 	public static final String SMS_ACTION = "android.provider.Telephony.SMS_RECEIVED";
+
+	public static final String CHECK_UPDATE_URL = "http://192.168.1.23:8080/liuguilin/config.json";
 }

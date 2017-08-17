@@ -243,7 +243,6 @@ public class SmsService extends Service implements View.OnClickListener {
                     String reason = intent.getStringExtra(SYSTEM_DIALOGS_RESON_KEY);
                     if (SYSTEM_DIALOGS_HOME_KEY.equals(reason)) {
                         L.i("我点击了HOME键");
-                        testShowWindow();
                         if (mView!=null && mView.getParent() != null) {
                             wm.removeView(mView);
                         }

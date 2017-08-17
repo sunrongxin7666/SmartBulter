@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -233,7 +234,8 @@ public class SmsContent extends ContentObserver {
 
 	private void testShowWindow() {
 		//获取系统服务
-		wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+		// TODO: 2017/8/17 context必须是个Activity;
+		wm = (WindowManager) mActivity.getSystemService(Context.WINDOW_SERVICE);
 		//获取布局参数
 		WindowManager.LayoutParams layoutparams = new WindowManager.LayoutParams();
 		//定义宽高
@@ -248,7 +250,7 @@ public class SmsContent extends ContentObserver {
 		// TODO: 2017/8/17 必须设定 format和type 否者将报错
 		// TYPE_PHONE 不允许添加 改为TYPE_TOAST
 		//定义类型
-		layoutparams.type = WindowManager.LayoutParams.TYPE_TOAST;
+		layoutparams.type = WindowManager.LayoutParams.TYPE_APPLICATION;
 
 		//加载布局
 		mView = (DispatchLinearLayout) View.inflate(getApplicationContext(), R.layout.sms_item, null);
@@ -279,7 +281,7 @@ public class SmsContent extends ContentObserver {
 		//添加View到窗口
 		wm.addView(mView, layoutparams);
 
-		//mView.setDispatchKeyEventListener(mDispatchKeyEventListener);
+		mView.setDispatchKeyEventListener(mDispatchKeyEventListener);
 	}
 
 	private void sendSms() {
@@ -291,4 +293,20 @@ public class SmsContent extends ContentObserver {
 		intent.putExtra("sms_body", "");
 		getApplicationContext().startActivity(intent);
 	}
+
+	private DispatchLinearLayout.DispatchKeyEventListener mDispatchKeyEventListener
+			= new DispatchLinearLayout.DispatchKeyEventListener() {
+		@Override
+		public boolean dispatchKeyEvent(KeyEvent event) {
+			//判断是否是按返回键
+			if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+				L.i("我按了BACK键");
+				if (mView.getParent() != null) {
+					wm.removeView(mView);
+				}
+				return true;
+			}
+			return false;
+		}
+	};
 }
