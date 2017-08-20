@@ -18,7 +18,7 @@ import com.kymjs.rxvolley.toolbox.FileUtils;
 
 import java.io.File;
 
-public class UpdatActivity extends BaseActivity {
+public class UpdateActivity extends BaseActivity {
 
 	//正在下载
 	public static final int HANDLER_LODING = 10001;

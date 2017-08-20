@@ -1,17 +1,13 @@
 package com.android.srx.github.smartbulter.ui;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
@@ -28,9 +24,6 @@ import com.kymjs.rxvolley.client.HttpCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static com.android.srx.github.smartbulter.R.id.btn_send_sms;
-import static com.android.srx.github.smartbulter.R.id.tv_phone;
 
 /**
  * Project: SmartBulter
@@ -51,6 +44,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
 	private LinearLayout ll_update;
 	private TextView tv_version;
+
+	//扫一扫
+	private LinearLayout ll_scan;
+	//扫描的结果
+	private TextView tv_scan_result;
+	//生成二维码
+	private LinearLayout ll_qr_code;
+	//我的位置
+	private LinearLayout ll_my_location;
+	//关于软件
+	private LinearLayout ll_about;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,6 +95,20 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 		} catch (PackageManager.NameNotFoundException e) {
 			tv_version.setText(getString(R.string.text_test_version) );
 		}
+
+		ll_scan = (LinearLayout) findViewById(R.id.ll_scan);
+		ll_scan.setOnClickListener(this);
+
+		tv_scan_result = (TextView) findViewById(R.id.tv_scan_result);
+
+		ll_qr_code = (LinearLayout) findViewById(R.id.ll_qr_code);
+		ll_qr_code.setOnClickListener(this);
+
+		ll_my_location = (LinearLayout) findViewById(R.id.ll_my_location);
+		ll_my_location.setOnClickListener(this);
+
+		ll_about = (LinearLayout) findViewById(R.id.ll_about);
+		ll_about.setOnClickListener(this);
 	}
 
 	@Override
@@ -118,6 +136,21 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 					}
 				});
 				break;
+			case R.id.ll_scan:
+				L.i("ll_scan");
+				//打开扫描界面扫描条形码或二维码
+//                Intent openCameraIntent = new Intent(this, CaptureActivity.class);
+//                startActivityForResult(openCameraIntent, 0);
+				break;
+			case R.id.ll_qr_code:
+				startActivity(new Intent(this, QrCodeActivity.class));
+				break;
+			case R.id.ll_my_location:
+				startActivity(new Intent(this,LocationActivity.class));
+				break;
+			case R.id.ll_about:
+				startActivity(new Intent(this,AboutActivity.class));
+				break;
 		}
 	}
 
@@ -125,6 +158,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 		try {
 			JSONObject jsonObject = new JSONObject(t);
 			int code = jsonObject.getInt("versionCode");
+			url = jsonObject.getString("url");
 			if(code > versionCode){
 				showUpdateDialog(jsonObject.getString("content"));
 			}else {
@@ -144,7 +178,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 				.setPositiveButton("更新", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						Intent intent = new Intent(SettingActivity.this, UpdatActivity.class);
+						Intent intent = new Intent(SettingActivity.this, UpdateActivity.class);
 						intent.putExtra("url", url);
 						startActivity(intent);
 					}
@@ -170,7 +204,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 		if (resultCode == RESULT_OK) {
 			Bundle bundle = data.getExtras();
 			String scanResult = bundle.getString("result");
-			//tv_scan_result.setText(scanResult);
+			tv_scan_result.setText(scanResult);
 		}
 	}
 }

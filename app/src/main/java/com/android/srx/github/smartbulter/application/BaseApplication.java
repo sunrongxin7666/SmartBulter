@@ -9,6 +9,7 @@ import com.android.srx.github.smartbulter.service.SmsContent;
 import com.android.srx.github.smartbulter.service.SmsService;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
 import com.android.srx.github.smartbulter.utils.StaticClass;
+import com.baidu.mapapi.SDKInitializer;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.squareup.leakcanary.LeakCanary;
@@ -43,5 +44,9 @@ public class BaseApplication extends Application {
 		if(isSms){
 			startService(new Intent(getApplicationContext(),SmsService.class));
 		}
+
+		//在使用SDK各组件之前初始化context信息，传入ApplicationContext
+		//注意该方法要再setContentView方法之前实现
+		SDKInitializer.initialize(getApplicationContext());
 	}
 }

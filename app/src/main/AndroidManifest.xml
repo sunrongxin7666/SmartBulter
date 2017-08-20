@@ -101,8 +101,23 @@
 
         <service android:name=".service.SmsService"/>
 
-        <activity android:name=".ui.UpdatActivity">
+        <activity android:name=".ui.UpdateActivity">
         </activity>
+        <activity android:name=".ui.QrCodeActivity">
+        </activity>
+        <activity android:name=".ui.LocationActivity">
+        </activity>
+        <activity android:name=".ui.AboutActivity">
+        </activity>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="KIXaj3dCXGF2FsBGGyDoOl1vEMNeq8Wn" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
     </application>
 
 </manifest>
