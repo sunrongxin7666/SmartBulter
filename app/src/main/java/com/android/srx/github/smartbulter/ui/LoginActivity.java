@@ -1,18 +1,17 @@
 package com.android.srx.github.smartbulter.ui;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.srx.github.smartbulter.Models.LoginModel;
 import com.android.srx.github.smartbulter.R;
+import com.android.srx.github.smartbulter.databinding.ActivityLoginBinding;
 import com.android.srx.github.smartbulter.entity.MyUser;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
 import com.android.srx.github.smartbulter.view.CustomDialog;
@@ -22,37 +21,32 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends AppCompatActivity {
 
-	private EditText et_name;
-	private EditText et_password;
-	private CheckBox keep_password;
-
 	private CustomDialog dialog;
+
+	private ActivityLoginBinding mBinding;
+	private LoginModel mModel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+		mBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+		mModel = new LoginModel();
 		initView();
 	}
 
 	private void initView() {
 
-		et_name = (EditText) findViewById(R.id.et_name);
-		et_password = (EditText) findViewById(R.id.et_password);
-		keep_password = (CheckBox) findViewById(R.id.keep_password);
-
-		boolean isKeep = SharedUtils.getBoolen(this, "keeppass", false);
-		keep_password.setChecked(isKeep);
+		mModel.isKeep.set(SharedUtils.getBoolen(this, "keeppass", false));
 
 		dialog = new CustomDialog(this, 130, 130, R.layout.dialog_loding, R.style.Theme_dialog, Gravity.CENTER,R.style.pop_anim_style);
 		dialog.setCancelable(false);
 
-		if(isKeep){
-			String name = SharedUtils.getString(this, "name", "");
-			String password = SharedUtils.getString(this, "password", "");
-			et_name.setText(name);
-			et_password.setText(password);
+		if(mModel.isKeep.get()){
+			mModel.userName.set(SharedUtils.getString(this, "name", ""));
+			mModel.password.set(SharedUtils.getString(this, "password", ""));
 		}
+
+		mBinding.setModel(mModel);
 	}
 
 	public void doRegister(View view) {
@@ -60,16 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 	}
 
 	public void doLogin(View view) {
-		//1.获取输入框的值
-		String name = et_name.getText().toString().trim();
-		String password = et_password.getText().toString().trim();
+		//1.获取输入框的值 依靠DataBingd
 		//2.判断是否为空
-		if (!TextUtils.isEmpty(name) & !TextUtils.isEmpty(password)) {
+		if (!TextUtils.isEmpty(mModel.userName.get()) & !TextUtils.isEmpty(mModel.password.get())) {
 			dialog.show();
 			//登录
 			final MyUser user = new MyUser();
-			user.setUsername(name);
-			user.setPassword(password);
+			user.setUsername(mModel.userName.get());
+			user.setPassword(mModel.password.get());
 			user.login(new SaveListener<MyUser>() {
 				@Override
 				public void done(MyUser myUser, BmobException e) {
@@ -100,13 +92,13 @@ public class LoginActivity extends AppCompatActivity {
 		super.onDestroy();
 
 		//保存状态
-		SharedUtils.putBoolean(this, "keeppass", keep_password.isChecked());
+		SharedUtils.putBoolean(this, "keeppass", mModel.isKeep.get());
 
 		//是否记住密码
-		if (keep_password.isChecked()) {
+		if (mModel.isKeep.get()) {
 			//记住用户名和密码
-			SharedUtils.putString(this, "name", et_name.getText().toString().trim());
-			SharedUtils.putString(this, "password", et_password.getText().toString().trim());
+			SharedUtils.putString(this, "name", mModel.userName.get());
+			SharedUtils.putString(this, "password", mModel.password.get());
 		} else {
 			SharedUtils.deleteSharedValue(this, "name");
 			SharedUtils.deleteSharedValue(this, "password");

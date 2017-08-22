@@ -1,76 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp">
-
-    <ImageView
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:hint="用户名"
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <EditText
-        android:id="@+id/et_password"
-        android:hint="密码"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"/>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="model"
+            type="com.android.srx.github.smartbulter.Models.LoginModel"/>
+    </data>
     <LinearLayout
-        android:layout_marginRight="10dp"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="right">
-        <CheckBox
-            android:id="@+id/keep_password"
-            android:text="记住密码?"
-            android:gravity="center"
-            android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <ImageView
+            android:src="@mipmap/ic_launcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <Button
-        android:id="@+id/btn_login"
-        android:text="登录"
-        android:layout_marginTop="10dp"
-        android:onClick="doLogin"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:text="注册"
-        android:id="@+id/btn_register"
-        android:layout_marginTop="10dp"
-        android:onClick="doRegister"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="right">
-        <TextView
-            android:id="@+id/tv_forget"
-            android:text="忘记密码"
-            android:gravity="center"
-            android:textColor="@color/colorAccent"
-            android:layout_width="wrap_content"
+        <EditText
+            android:hint="用户名"
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:onClick="doReset"/>
+            android:text="@={model.userName}"/>
+        <EditText
+            android:id="@+id/et_password"
+            android:hint="密码"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:text="@={model.password}"/>
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right">
+            <CheckBox
+                android:id="@+id/keep_password"
+                android:text="记住密码?"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={model.isKeep}"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_login"
+            android:text="登录"
+            android:layout_marginTop="10dp"
+            android:onClick="doLogin"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:text="注册"
+            android:id="@+id/btn_register"
+            android:layout_marginTop="10dp"
+            android:onClick="doRegister"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right">
+            <TextView
+                android:id="@+id/tv_forget"
+                android:text="忘记密码"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="doReset"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>
+
