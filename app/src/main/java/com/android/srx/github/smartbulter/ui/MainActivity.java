@@ -16,6 +16,7 @@ import android.view.View;
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.fragment.ButlerFragment;
 import com.android.srx.github.smartbulter.fragment.GirlFragment;
+import com.android.srx.github.smartbulter.fragment.NewsFragment;
 import com.android.srx.github.smartbulter.fragment.UserFragment;
 import com.android.srx.github.smartbulter.fragment.WechatFragment;
 import com.android.srx.github.smartbulter.service.SmsContent;
@@ -112,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
 	private void initData() {
 		mTitles = new ArrayList<>();
 		mTitles.add("服务管家");
-		mTitles.add("微信精选");
+		mTitles.add("RE:微信精选");
 		mTitles.add("美女社区");
 		mTitles.add("个人中心");
 
 		mFragments = new ArrayList<>();
 		mFragments.add(new ButlerFragment());
-		mFragments.add(new WechatFragment());
+		mFragments.add(new NewsFragment());
 		mFragments.add(new GirlFragment());
 		mFragments.add(new UserFragment());
 	}

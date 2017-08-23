@@ -73,4 +73,7 @@
     <string name="text_setting_content_6">时刻掌握自身位置</string>
     <string name="text_setting_content_7">www.imooc.com</string>
     <string name="text_now_login">正在登陆...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
