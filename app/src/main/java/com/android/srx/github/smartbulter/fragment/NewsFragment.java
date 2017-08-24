@@ -10,12 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.adapter.NewsAdapter;
-import com.android.srx.github.smartbulter.adapter.WechatAdapter;
+import com.android.srx.github.smartbulter.adapter.OnItemClickListener;
 import com.android.srx.github.smartbulter.entity.WeChatData;
 import com.android.srx.github.smartbulter.ui.WebViewActivity;
 import com.android.srx.github.smartbulter.utils.L;
@@ -93,7 +91,7 @@ public class NewsFragment extends android.support.v4.app.Fragment {
 			NewsAdapter adapter = new NewsAdapter(getActivity(), mList);
 
 			//点击事件
-			adapter.setListener(new NewsAdapter.OnItemClickListener() {
+			adapter.setListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(View view, int position) {
 					L.i("position:" + position);

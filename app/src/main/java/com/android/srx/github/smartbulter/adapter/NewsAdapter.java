@@ -1,7 +1,6 @@
 package com.android.srx.github.smartbulter.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.entity.WeChatData;
-import com.android.srx.github.smartbulter.ui.WebViewActivity;
 import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.PicassoUtils;
 
@@ -38,8 +36,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
 	private int width,height;
 	private WindowManager wm;
-
-
 
 	private OnItemClickListener mListener;
 
@@ -110,8 +106,4 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 		}
 	}
 
-	public interface OnItemClickListener{
-		void onItemClick(View v, int position);
-		void onItemLongClick(View v, int position);
-	}
 }

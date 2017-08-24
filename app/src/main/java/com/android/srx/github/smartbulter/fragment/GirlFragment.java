@@ -1,8 +1,10 @@
 package com.android.srx.github.smartbulter.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.LinearLayout;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.adapter.GridAdapter;
+import com.android.srx.github.smartbulter.adapter.OnItemClickListener;
+import com.android.srx.github.smartbulter.adapter.PictureAdapter;
 import com.android.srx.github.smartbulter.entity.GirlData;
 import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.PicassoUtils;
@@ -42,11 +46,11 @@ import java.util.List;
 public class GirlFragment extends Fragment {
 
 	//列表
-	private GridView mGridView;
+	private RecyclerView mRecyclerView;
 	//数据
 	private List<GirlData> mList = new ArrayList<>();
 	//适配器
-	private GridAdapter mAdapter;
+	private PictureAdapter mAdapter;
 	//提示框
 	private CustomDialog dialog;
 	//预览图片
@@ -66,6 +70,7 @@ public class GirlFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_girl, null);
+
 		findView(view);
 		return view;
 	}
@@ -73,7 +78,9 @@ public class GirlFragment extends Fragment {
 	//初始化View
 	private void findView(View view) {
 
-		mGridView = (GridView) view.findViewById(R.id.mGridView);
+		mRecyclerView = (RecyclerView) view.findViewById(R.id.mGridView);
+		mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
+		mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
 		//初始化提示框
 		dialog = new CustomDialog(getActivity(), LinearLayout.LayoutParams.MATCH_PARENT,
@@ -98,18 +105,7 @@ public class GirlFragment extends Fragment {
 		});
 
 		//监听点击事件
-		mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				//解析图片
-				PicassoUtils.loadImaheView(getActivity(), mListUrl.get(position), iv_img);
-				//缩放
-				mAttacher = new PhotoViewAttacher(iv_img);
-				//刷新
-				mAttacher.update();
-				dialog.show();
-			}
-		});
+
 	}
 
 	//解析Json
@@ -126,11 +122,34 @@ public class GirlFragment extends Fragment {
 				data.setImgUrl(url);
 				mList.add(data);
 			}
-			mAdapter = new GridAdapter(getActivity(), mList);
-			//设置适配器
-			mGridView.setAdapter(mAdapter);
+			setupAdapterToRecyclerView();
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void setupAdapterToRecyclerView() {
+		mAdapter = new PictureAdapter(getActivity(), mList);
+		//设置适配器
+		mRecyclerView.setAdapter(mAdapter);
+		//设置监听事件
+		mAdapter.setListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(View v, int position) {
+				//解析图片
+				PicassoUtils.loadImaheView(getActivity(), mListUrl.get(position), iv_img);
+				//缩放
+				mAttacher = new PhotoViewAttacher(iv_img);
+				//刷新
+				mAttacher.update();
+				dialog.show();
+			}
+
+			@Override
+			public void onItemLongClick(View v, int position) {
+				onItemClick(v,position);
+			}
+		});
 	}
 }
