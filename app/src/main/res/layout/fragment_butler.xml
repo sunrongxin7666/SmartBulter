@@ -7,7 +7,7 @@
     android:background="@drawable/wechat_bg"
     android:orientation="vertical">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:dividerHeight="0dip"
         android:scrollbars="none"
         android:id="@+id/mChatListView"

@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 	private void initData() {
 		mTitles = new ArrayList<>();
 		mTitles.add("服务管家");
-		mTitles.add("RE:微信精选");
+		mTitles.add("微信精选");
 		mTitles.add("美女社区");
 		mTitles.add("个人中心");
 

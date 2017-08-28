@@ -3,6 +3,8 @@ package com.android.srx.github.smartbulter.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.adapter.ChatListAdapter;
+import com.android.srx.github.smartbulter.adapter.RecChartAdapter;
 import com.android.srx.github.smartbulter.entity.ChatListData;
 import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.SharedUtils;
@@ -41,10 +44,10 @@ import java.util.List;
 
 public class ButlerFragment extends Fragment implements View.OnClickListener {
 
-	private ListView mChatListView;
+	private RecyclerView mChatView;
 
 	private List<ChatListData> mList = new ArrayList<>();
-	private ChatListAdapter adapter;
+	private RecChartAdapter adapter;
 
 	//TTS
 	private SpeechSynthesizer mTts;
@@ -77,14 +80,15 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 		//如果不需要保存合成音频，注释该行代码
 		//mTts.setParameter(SpeechConstant.TTS_AUDIO_PATH, "./sdcard/iflytek.pcm");
 
-		mChatListView = (ListView) view.findViewById(R.id.mChatListView);
+		mChatView = (RecyclerView) view.findViewById(R.id.mChatListView);
 		et_text = (EditText) view.findViewById(R.id.et_text);
 		btn_send = (Button) view.findViewById(R.id.btn_send);
 		btn_send.setOnClickListener(this);
 
+		mChatView.setLayoutManager(new LinearLayoutManager(getActivity()));
 		//设置适配器
-		adapter = new ChatListAdapter(getActivity(), mList);
-		mChatListView.setAdapter(adapter);
+		adapter = new RecChartAdapter(getActivity(), mList);
+		mChatView.setAdapter(adapter);
 
 		addLeftItem(getString(R.string.text_hello_tts));
 	}
@@ -165,7 +169,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 		//通知adapter刷新
 		adapter.notifyDataSetChanged();
 		//滚动到底部
-		mChatListView.setSelection(mChatListView.getBottom());
+		mChatView.scrollToPosition(adapter.getItemCount()-1);
 	}
 
 	//添加右边文本
@@ -178,7 +182,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener {
 		//通知adapter刷新
 		adapter.notifyDataSetChanged();
 		//滚动到底部
-		mChatListView.setSelection(mChatListView.getBottom());
+		mChatView.scrollToPosition(adapter.getItemCount()-1);
 	}
 
 	//开始说话
