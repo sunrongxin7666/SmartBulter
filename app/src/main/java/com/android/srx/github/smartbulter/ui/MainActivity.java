@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 		//CrashReport.testJavaCrash();
 
-		mSmsContent = new SmsContent(new Handler(),this);
-		mSmsContent.register();
+		//mSmsContent = new SmsContent(new Handler(),this);
+		//mSmsContent.register();
 	}
 
 	private void initView() {
@@ -131,6 +131,6 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mSmsContent.unRegister();
+		//mSmsContent.unRegister();
 	}
 }

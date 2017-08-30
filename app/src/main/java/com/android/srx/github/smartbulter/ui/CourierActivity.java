@@ -1,6 +1,9 @@
 package com.android.srx.github.smartbulter.ui;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.adapter.CourierAdapter;
+import com.android.srx.github.smartbulter.databinding.ActivityCourierBinding;
 import com.android.srx.github.smartbulter.entity.CourierData;
 import com.android.srx.github.smartbulter.utils.L;
 import com.android.srx.github.smartbulter.utils.StaticClass;
@@ -26,28 +30,22 @@ import java.util.List;
 
 public class CourierActivity extends BaseActivity implements View.OnClickListener {
 
-	private EditText et_name;
-	private EditText et_number;
-	private Button btn_get_courier;
-	private ListView mListView;
-
 	private List<CourierData> mList = new ArrayList<>();
+
+	private ActivityCourierBinding mBinding;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_courier);
+		mBinding = DataBindingUtil.setContentView(this,R.layout.activity_courier);
 
 		initView();
 	}
 
 	//初始化View
 	private void initView() {
-		et_name = (EditText) findViewById(R.id.et_name);
-		et_number = (EditText) findViewById(R.id.et_number);
-		btn_get_courier = (Button) findViewById(R.id.btn_get_courier);
-		btn_get_courier.setOnClickListener(this);
-		mListView = (ListView) findViewById(R.id.mListView);
+		mBinding.btnGetCourier.setOnClickListener(this);
+		mBinding.mListView.setLayoutManager(new LinearLayoutManager(this));
 	}
 
 	@Override
@@ -65,8 +63,8 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
 				 */
 
 				//1.获取输入框的内容
-				String name = et_name.getText().toString().trim();
-				String number = et_number.getText().toString().trim();
+				String name = mBinding.etName.getText().toString().trim();
+				String number = mBinding.etNumber.getText().toString().trim();
 
 				//拼接我们的url
 				String url = "http://v.juhe.cn/exp/index?key=" + StaticClass.JUHE_COURIER_API_KEY
@@ -100,6 +98,7 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
 			}
 			JSONObject jsonResult = jsonObject.getJSONObject("result");
 			JSONArray jsonArray = jsonResult.getJSONArray("list");
+			mList.clear();
 			for (int i = 0; i < jsonArray.length(); i++) {
 				//list中每一个Json都一个CourierData对象；
 				JSONObject json = (JSONObject) jsonArray.get(i);
@@ -113,7 +112,7 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
 			//倒序
 			Collections.reverse(mList);
 			CourierAdapter adapter = new CourierAdapter(this,mList);
-			mListView.setAdapter(adapter);
+			mBinding.setAdapter(adapter);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

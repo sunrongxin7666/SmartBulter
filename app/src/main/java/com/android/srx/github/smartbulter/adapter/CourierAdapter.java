@@ -1,12 +1,14 @@
 package com.android.srx.github.smartbulter.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
+import com.android.srx.github.smartbulter.BR;
 import com.android.srx.github.smartbulter.R;
 import com.android.srx.github.smartbulter.entity.CourierData;
 
@@ -20,29 +22,28 @@ import java.util.List;
  * Description: 快递路由配置器
  */
 
-public class CourierAdapter extends BaseAdapter {
-
-	private Context mContext;
+public class CourierAdapter extends RecyclerView.Adapter<CourierAdapter.BindingViewHolder> {
 	private List<CourierData> mList;
 	//布局加载器
 	private LayoutInflater inflater;
-	private CourierData data;
 
 	public CourierAdapter(Context mContext, List<CourierData> mList) {
-		this.mContext = mContext;
 		this.mList = mList;
 		//获取系统服务
-		inflater = (LayoutInflater) this.mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
-	public int getCount() {
-		return mList.size();
+	public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+		//注意这里使用的是ViewDatatBinding
+		ViewDataBinding  binding = DataBindingUtil.inflate(inflater, R.layout.layout_courier_item, parent,false);
+		return new BindingViewHolder<>(binding);
 	}
 
 	@Override
-	public Object getItem(int position) {
-		return mList.get(position);
+	public void onBindViewHolder(BindingViewHolder holder, int position) {
+		CourierData data = mList.get(position);
+		holder.getBinding().setVariable(BR.data, data);
 	}
 
 	@Override
@@ -51,34 +52,24 @@ public class CourierAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder viewHolder = null;
-		//第一次加载
-		if (convertView == null) {
-			viewHolder = new ViewHolder();
-			convertView = inflater.inflate(R.layout.layout_courier_item, null);
-			viewHolder.tv_remark = (TextView) convertView.findViewById(R.id.tv_remark);
-			viewHolder.tv_zone = (TextView) convertView.findViewById(R.id.tv_zone);
-			viewHolder.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
-			//设置缓存
-			convertView.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
-		}
-
-		//设置数据
-		data = mList.get(position);
-
-		viewHolder.tv_remark.setText(data.getRemark());
-		viewHolder.tv_zone.setText(data.getZone());
-		viewHolder.tv_datetime.setText(data.getDatetime());
-		return convertView;
+	public int getItemCount() {
+		return mList.size();
 	}
 
-	private class ViewHolder {
-		private TextView tv_remark;
-		private TextView tv_zone;
-		private TextView tv_datetime;
+	public class BindingViewHolder<T extends ViewDataBinding>
+			extends RecyclerView.ViewHolder {
+
+		private T mBinding;
+
+		public BindingViewHolder(T binding) {
+			//获得layout标签下，那个真正的view
+			super(binding.getRoot());
+			mBinding = binding;
+		}
+
+		public T getBinding() {
+			return mBinding;
+		}
 	}
 }
 

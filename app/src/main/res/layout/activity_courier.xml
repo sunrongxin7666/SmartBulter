@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/et_name"
+    <data>
+        <variable
+            name="adapter"
+            type="com.android.srx.github.smartbulter.adapter.CourierAdapter"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/text_courier_company"
-        android:text="sf"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_courier_company"
+            android:text="sf"/>
 
 
-    <EditText
-        android:id="@+id/et_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/text_courier_number"
-        android:text="12313"/>
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_courier_number"
+            android:text="12313"/>
 
-    <Button
-        android:id="@+id/btn_get_courier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:text="查询"
-        android:textColor="@android:color/white"/>
+        <Button
+            android:id="@+id/btn_get_courier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="查询"
+            android:textColor="@android:color/white"/>
 
-    <ListView
-        android:id="@+id/mListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:adapter="@{adapter}"/>
         <!--layout_weight=1表示该空间占据宽的100%-->
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
+
